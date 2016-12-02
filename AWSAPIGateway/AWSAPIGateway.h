@@ -23,3 +23,6 @@ FOUNDATION_EXPORT const unsigned char AWSAPIGatewayVersionString[];
 
 #import <AWSCore/AWSCore.h>
 #import "AWSAPIGatewayClient.h"
+#import "AWSModel+HTTPResponse.h"
+
+

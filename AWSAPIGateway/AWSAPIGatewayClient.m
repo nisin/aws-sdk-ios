@@ -16,6 +16,8 @@
 #import "AWSAPIGatewayClient.h"
 #import <AWSCore/AWSCore.h>
 
+#import "AWSModel+HTTPResponse.h"
+
 NSString *const AWSAPIGatewayErrorDomain = @"com.amazonaws.AWSAPIGatewayErrorDomain";
 
 NSString *const AWSAPIGatewayErrorHTTPBodyKey = @"HTTPBody";
@@ -297,6 +299,7 @@ static int defaultChunkSize = 1024;
                 if (HTTPHeaderFields) {
                     userInfo[AWSAPIGatewayErrorHTTPHeaderFieldsKey] = HTTPHeaderFields;
                 }
+                userInfo[@"HTTPStatusCode"] = @(HTTPStatusCode);
 
                 if (HTTPStatusCode/100 == 4) {
                     NSError *clientError = [NSError errorWithDomain:AWSAPIGatewayErrorDomain
@@ -324,6 +327,9 @@ static int defaultChunkSize = 1024;
                                                                error:&responseSerializationError];
                         if (!JSONObject) {
                             AWSLogError(@"Failed to serialize the body JSON. %@", responseSerializationError);
+                        }
+                        if ([JSONObject isKindOfClass:[AWSModel class]]) {
+                            ((AWSModel*)JSONObject).httpResponse = HTTPResponse;
                         }
                     }
                     if ([JSONObject isKindOfClass:[NSArray class]]) {
