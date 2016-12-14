@@ -48,6 +48,10 @@ typedef NS_ENUM(NSInteger, AWSRegionType) {
      */
     AWSRegionEUWest1,
     /**
+     *  EU (London)
+     */
+    AWSRegionEUWest2,
+    /**
      *  EU (Frankfurt)
      */
     AWSRegionEUCentral1,
@@ -79,6 +83,10 @@ typedef NS_ENUM(NSInteger, AWSRegionType) {
      *  China (Beijing)
      */
     AWSRegionCNNorth1,
+    /**
+     *  Canada (Central)
+     */
+    AWSRegionCACentral1,
     /**
      *  AWS GovCloud (US)
      */
@@ -165,13 +173,17 @@ typedef NS_ENUM(NSInteger, AWSServiceType) {
      */
     AWSServiceMobileAnalytics,
     /**
+     *  Amazon Mobile Targeting
+     */
+    AWSServiceMobileTargeting,
+    /**
      *  Amazon Polly
      */
     AWSServicePolly,
     /**
-     *  Amazon Mobile Targeting
+     *  Amazon Rekognition
      */
-    AWSServiceMobileTargeting,
+    AWSServiceRekognition,
     /**
      *  Amazon Simple Storage Service (S3)
      */
